@@ -1,5 +1,5 @@
 def bny(l, s, e, t):
-    if l[s] <= t and l[e] >= t:
+    if l[s]<= t and l[e]>= t:
         mid = (s+e)//2
         if l[mid] == t:
             return mid
