@@ -1,10 +1,11 @@
 def bny(l, s, e, t):
-    mid = (s+e)//2
-    if l[mid] == t:
-        return mid
-    elif l[mid] > t:
-        return bny(l, s, mid-1, t)
-    elif l[mid] < t:
+    if(l[s]<=t and l[e]>=t):
+        mid = (s+e)//2
+        if l[mid] == t:
+            return mid
+        elif l[mid] > t:
+            return bny(l, s, mid-1, t)
+        elif l[mid] < t:
             return bny(l, mid+1, e, t)
     else:
         return -1
