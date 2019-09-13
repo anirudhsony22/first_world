@@ -6,7 +6,7 @@
 int main() {
     int res[10]={0},j=0;
     char num[1000];
-    scanf("%s",&num);
+    scanf("%s",num);
     for(int i=0;i<strlen(num);i++){
         if(num[i]>='0' && num[i]<='9'){
             char b=num[i];
@@ -17,6 +17,9 @@ int main() {
             j = 0;
 
         }
+    }
+    for(int i=0;i<10;i++){
+    printf("%d ",&res[i]);
     }
     return 0;
 }
