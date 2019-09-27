@@ -7,43 +7,53 @@ void printArray(int a[],int n){
 }
 
 int check(int a[],int n,int i){
-  int res=1,l=2*i+1,r=2*i+2,j=i;
-  while(i<n){
-    if(l<n && a[j]<a[l]){
+  int largest=i,res=1;
+  if(2*i+1<n && a[i]<a[2*i+1]){
+    res=0;
+  }
+  if(2*i+2<n && a[i]<a[2*i+2]){
+    res=0;
+  }
+  return res;
+}
+
+int wc(int a[], int n, int i){
+  int res=1,j=2*i+1,k=2*i+2;
+  if(check(a,n,j)==0 || check(a,n,k)==0){
+    res=0;
+  }
+  else if(j<n){
+    if(wc(a,n,j)==0){
       res=0;
-      break;
     }
-    if(r<n && a[j]<a[r]){
+    if(wc(a,n,k)==0){
       res=0;
-      break;
     }
-    j+=1;
-    l=2*j+1;r=2*j+2;
   }
   return res;
 }
 
 void fix(int a[],int n,int i){
   if(check(a,n,i)==0){
-  int temp=a[i];
-  if(a[2*i+1]<a[2*i+2]){
-    a[i]=a[2*i+2];
-    a[2*i+2]=temp;
-  }
-  else{
-    a[i]=a[2*i+1];
-    a[2*i+1]=temp;
-  }
-  while(check(a,n,2*i+1)==0){
-    fix(a,n,2*i+1);
-  }
-  while(check(a,n,2*i+2)==0){
-    fix(a,n,2*i+2);
-  }
+    int temp=a[i];
+    if(a[2*i+1]<a[2*i+2] && 2*i+2<n){
+      a[i]=a[2*i+2];
+      a[2*i+2]=temp;
+    }
+    else if(2*i+1<n){
+      a[i]=a[2*i+1];
+      a[2*i+1]=temp;
+    }
+    if(check(a,n,2*i+1)==0){
+      fix(a,n,2*i+1);
+    }
+    if(check(a,n,2*i+2)==0){
+      fix(a,n,2*i+2);
+    }
   }
 }
 
-int main(void) {
+int main(void){
   int n;
   scanf("%d",&n);
   int a[n];
