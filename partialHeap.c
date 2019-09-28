@@ -19,6 +19,7 @@ int check(int a[], int n, int i, int s){
 }
 
 void fix(int a[], int n, int i, int s){
+  //printArray(a,n);
   if(check(a,n,i,s)==0){
     int temp=a[i];
     if(2*i-s+2<n && a[2*i-s+1]<a[2*i-s+2]){
@@ -39,7 +40,7 @@ void fix(int a[], int n, int i, int s){
 }
 
 void heapify(int a[], int n, int s){
-  for(int j=n-1;j>=s;j++){
+  for(int j=n-1;j>=s;j--){
     fix(a,n,j,s);
   }
 }
@@ -51,10 +52,9 @@ int main(void) {
   for(int i=0;i<n;i++){
     scanf("%d",&a[i]);
   }
-  /*for(int i=0;i<2;i++){
+  for(int i=0;i<n;i++){
     heapify(a,n,i);
     printArray(a,n);
-  }*/
-  heapify(a,n,0);
+  }
   printArray(a,n);
 }
