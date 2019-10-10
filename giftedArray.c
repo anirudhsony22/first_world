@@ -9,10 +9,10 @@ void printArray(int a[],int n){
 
 int check(int a[], int n, int i, int s){
   int res=1;
-  if(2*i-s+1<n && a[i]<a[2*i-s+1]){
+  if(2*i-s+1<n && a[i]>a[2*i-s+1]){
     res=0;
   }
-  if(2*i-s+2<n && a[i]<a[2*i-s+2]){
+  if(2*i-s+2<n && a[i]>a[2*i-s+2]){
     res=0;
   }
   return res;
@@ -22,7 +22,7 @@ void fix(int a[], int n, int i, int s){
   //printArray(a,n);
   if(check(a,n,i,s)==0){
     int temp=a[i];
-    if(2*i-s+2<n && a[2*i-s+1]<a[2*i-s+2]){
+    if(2*i-s+2<n && a[2*i-s+1]>a[2*i-s+2]){
       a[i]=a[2*i-s+2];
       a[2*i-s+2]=temp;
     }
@@ -110,3 +110,4 @@ int main(void) {
   }
   //final(a,n);
 }
+ 
